@@ -48,7 +48,7 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     spell-checking
+     ;; spell-checking
      syntax-checking
      version-control
      )
@@ -305,15 +305,11 @@ you should place your code here."
   ;;org files goes in dropbox
   (custom-set-variables
    '(org-directory "~/Dropbox/org"))
+  (setq org-todo-keywords
+        '((sequence "IN" "NEXT" "PROJECT" "WAITING" "REF" "INCUBATED" "DONE" )))
   (setq org-capture-templates
-        (quote (("t" "todo" entry (file (concat org-directory "/gtd.org"))
-                 "* TODO %?\n%U\n" :clock-resume t)
-                ("h" "todo here" entry (file (concat org-directory "/gtd.org"))
-                 "* TODO %?\n%U\n%a\n" :clock-resume t)
-                ("n" "note" entry (file (concat org-directory "/gtd.org"))
-                 "* %?\ %U\n  %i\n" :clock-resume t)
-                ("j" "journal" entry (file+datetree (concat org-directory "/diary.org"))
-                 "* %?\nEntered on %U\n  %i\n" :clock-resume t)
+        (quote (("i" "IN" entry (file (concat org-directory "/gtd.org"))
+                 "* IN %?\n%U\n" :clock-resume t)
                 )))
   ;;make kill backward word work in search buffer
   (with-eval-after-load 'company
