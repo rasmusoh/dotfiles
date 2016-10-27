@@ -303,8 +303,6 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;;org files goes in dropbox
-  (custom-set-variables
-   '(org-directory "~/Dropbox/org"))
   (setq org-todo-keywords
         '((sequence "IN" "NEXT" "PROJECT" "WAITING" "REF" "INCUBATED" "DONE" )))
   (setq org-capture-templates
@@ -326,3 +324,23 @@ you should place your code here."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(org-directory "~/Dropbox/org")
+ '(spacemacs-theme-org-height nil)
+ '(spacemacs-theme-org-highlight nil)
+ '(spacemacs-theme-custom-colors
+   '((head1 . "#b2b2b2")
+     (head2 . "#b2b2b2")
+     (head3 . "#b2b2b2")
+     (head4 . "#b2b2b2"))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
