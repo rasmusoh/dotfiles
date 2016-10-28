@@ -136,7 +136,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 20
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -298,22 +298,77 @@ before packages are loaded. If you are unsure, you should try in setting them in
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
-layers configuration.
+  layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   ;;org files goes in dropbox
+  (setq org-directory "~/Dropbox/org")
+  (setq org-agenda-files (list
+                          (concat org-directory "/gtd.org")
+                          (concat org-directory "/notes.org")
+                          (concat org-directory "/ref.org")
+                          (concat org-directory "/someday.org")))
+  (setq org-agenda-custom-commands
+            '(("w" todo "WAITING")
+              ("i" todo "IN")
+              ("p" todo "PROJECT")
+              ("h" tags "+home+TODO=\"NEXT\"")
+              ("s" tags "+stan+TODO=\"NEXT\"")
+              ("c" tags "+ica+TODO=\"NEXT\"")
+              ("j" tags "+work+TODO=\"NEXT\"")))
+  ;;gtd statuses/templates
   (setq org-todo-keywords
-        '((sequence "IN" "NEXT" "PROJECT" "WAITING" "REF" "INCUBATED" "DONE" )))
+    '((sequence "IN" "NEXT" "PROJECT" "WAITING" "REF" "INCUBATED" "DONE" )))
   (setq org-capture-templates
-        (quote (("i" "IN" entry (file (concat org-directory "/gtd.org"))
-                 "* IN %?\n%U\n" :clock-resume t)
-                )))
+    '(("i" "IN" entry (file (concat org-directory "/gtd.org"))
+        "* IN %?\n%U\n" :clock-resume t)
+      ("n" "NOTE" entry (file (concat org-directory "/notes.org"))
+        "* %?\n%U\n" :clock-resume t)
+      ("r" "REF" entry (file (concat org-directory "/ref.org"))
+       "* REF %?\n%U\n" :clock-resume t)
+      ("s" "SOMEDAY" entry (file (concat org-directory "/someday.org"))
+        "* NOTE %?\n%U\n" :clock-resume t)))
   ;;make kill backward word work in search buffer
   (with-eval-after-load 'company
     (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word))
   (with-eval-after-load 'helm
-    (define-key helm-map (kbd "C-w") 'evil-delete-backward-word))
+      (define-key helm-map (kbd "C-w") 'evil-delete-backward-word))
+  (define-key isearch-mode-map (kbd "C-w") 'isearch-delete-char)
+  (define-key isearch-mode-map (kbd "C-p") 'isearch-yank-word-or-char)
+
+  ;; svenska chars map
+  (define-key evil-normal-state-map (kbd "ö") 'evil-repeat-find-char)
+  (define-key evil-visual-state-map (kbd "ö") 'evil-repeat-find-char)
+  (define-key evil-normal-state-map (kbd "Ö") 'evil-ex)
+  (define-key evil-visual-state-map (kbd "Ö") 'evil-ex)
+  (define-key evil-normal-state-map (kbd "ä") 'evil-goto-mark-line)
+  (define-key evil-visual-state-map (kbd "ä") 'evil-goto-mark-line)
+  (define-key evil-normal-state-map (kbd "Ä") 'evil-use-register)
+  (define-key evil-visual-state-map (kbd "Ä") 'evil-use-register)
+  (define-key evil-normal-state-map (kbd "Å") 'evil-backward-paragraph)
+  (define-key evil-visual-state-map (kbd "Å") 'evil-backward-paragraph)
+  (define-key evil-normal-state-map (kbd "¤") 'evil-end-of-line)
+  (define-key evil-visual-state-map (kbd "¤") 'evil-end-of-line)
+  (define-key evil-normal-state-map (kbd "-") 'evil-search-forward)
+  (define-key evil-visual-state-map (kbd "-") 'evil-search-forward)
+  (define-key evil-normal-state-map (kbd "_") 'evil-search-backward)
+  (define-key evil-visual-state-map (kbd "_") 'evil-search-backward)
+  ;;(define-key evil-normal-state-map (kbd "å") [)
+  ;;(define-key evil-visual-state-map (kbd "å") [)
+  ;;(define-key evil-normal-state-map (kbd "¨") ])
+  ;;(define-key evil-visual-state-map (kbd "¨") ])
+
+  (load-file "~/dotfiles/spacemacs/evil-destroy.el")
+  (define-key evil-normal-state-map "s" 'evil-destroy)
+  (define-key evil-normal-state-map "S" 'evil-destroy-line)
+  (define-key evil-normal-state-map "c" 'evil-destroy-change)
+  (define-key evil-normal-state-map "x" 'evil-destroy-char)
+  (define-key evil-normal-state-map "X" 'evil-destroy-whole-line)
+  (define-key evil-normal-state-map "Y" 'evil-copy-to-end-of-line)
+  (define-key evil-visual-state-map "P" 'evil-destroy-paste-before)
+  (define-key evil-visual-state-map "p" 'evil-destroy-paste-after)
+
   ;;Make evil-mode up/down operate in screen lines instead of logical lines
   (define-key evil-motion-state-map "j" 'evil-next-visual-line)
   (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
