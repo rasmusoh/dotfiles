@@ -31,27 +31,36 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     markdown
-     python
      ;; ----------------------------------------------------------------
+     ;; <M-m f e R> (Emacs style) to install them.
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
-     ;; <M-m f e R> (Emacs style) to install them.
-     ;; ----------------------------------------------------------------
-     helm
+     ;; spell-checking
      auto-completion
      better-defaults
+     clojure
+     csharp
      emacs-lisp
      git
+     github
+     helm
+     haskell
+     html
+     javascript
+     latex
      markdown
      org
+     python
+     ranger
+     restclient
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
-     ;; spell-checking
+     shell-scripts
+     sql
      syntax-checking
-     version-control
-     )
+     themes-megapack
+     version-control)
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
@@ -302,6 +311,7 @@ This function is called at the very end of Spacemacs initialization after
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (setq-default dotspacemacs-themes '(hc-zenburn spacemacs-dark))
   ;;org files goes in dropbox
   (setq org-directory "~/Dropbox/org")
   (setq org-agenda-files (list
@@ -328,7 +338,7 @@ you should place your code here."
       ("r" "REF" entry (file (concat org-directory "/ref.org"))
        "* REF %?\n%U\n" :clock-resume t)
       ("s" "SOMEDAY" entry (file (concat org-directory "/someday.org"))
-        "* NOTE %?\n%U\n" :clock-resume t)))
+        "* %?\n%U\n" :clock-resume t)))
   ;;make kill backward word work in search buffer
   (with-eval-after-load 'company
     (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word))
@@ -336,6 +346,9 @@ you should place your code here."
       (define-key helm-map (kbd "C-w") 'evil-delete-backward-word))
   (define-key isearch-mode-map (kbd "C-w") 'isearch-delete-char)
   (define-key isearch-mode-map (kbd "C-p") 'isearch-yank-word-or-char)
+
+  (define-key evil-normal-state-map (kbd "C-i") 'evil-jump-forward)
+  (define-key evil-visual-state-map (kbd "C-i") 'evil-jump-forward)
 
   ;; svenska chars map
   (define-key evil-normal-state-map (kbd "ö") 'evil-repeat-find-char)
@@ -369,11 +382,16 @@ you should place your code here."
   (define-key evil-visual-state-map "P" 'evil-destroy-paste-before)
   (define-key evil-visual-state-map "p" 'evil-destroy-paste-after)
 
+  ;;enter inserts newline in normal mode
+  (define-key evil-normal-state-map (kbd "RET")
+    (lambda ()
+      (interactive)
+      (call-interactively 'spacemacs/evil-insert-line-below)
+      (evil-next-line)))
   ;;Make evil-mode up/down operate in screen lines instead of logical lines
   (define-key evil-motion-state-map "j" 'evil-next-visual-line)
-  (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
-  ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
+  (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
   (global-visual-line-mode t))
 
@@ -388,11 +406,7 @@ you should place your code here."
  '(org-directory "~/Dropbox/org")
  '(spacemacs-theme-org-height nil)
  '(spacemacs-theme-org-highlight nil)
- '(spacemacs-theme-custom-colors
-   '((head1 . "#b2b2b2")
-     (head2 . "#b2b2b2")
-     (head3 . "#b2b2b2")
-     (head4 . "#b2b2b2"))))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
