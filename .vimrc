@@ -30,6 +30,8 @@ set expandtab
 
 "MAPPINGS
 let mapleader = "\<Space>"
+noremap <CR> o<Esc>
+noremap <CR> O<Esc>
 " kill line
 noremap K i<CR><Esc>k$
 " cutting chars and visual paste doesnt write to register
@@ -39,6 +41,7 @@ noremap c "_c
 noremap C "_C
 noremap x "_x
 noremap X "_dd
+" cut to clipboard
 noremap y "*y
 noremap yy "*yy
 noremap Y "*Y
