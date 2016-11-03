@@ -29,6 +29,8 @@ set shiftwidth=4 " On pressing tab, insert 4 spaces
 set expandtab
 
 "MAPPINGS
+inoremap fd <Esc>
+vnoremap fd <Esc>
 let mapleader = "\<Space>"
 noremap <CR> o<Esc>
 noremap <CR> O<Esc>
