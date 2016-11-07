@@ -315,11 +315,7 @@ you should place your code here."
   (setq-default dotspacemacs-themes '(hc-zenburn spacemacs-dark))
   ;;org files goes in dropbox
   (setq org-directory "~/Dropbox/org")
-  (setq org-agenda-files (list
-                          (concat org-directory "/gtd.org")
-                          (concat org-directory "/notes.org")
-                          (concat org-directory "/ref.org")
-                          (concat org-directory "/someday.org")))
+  (setq org-agenda-files '("~/Dropbox/org"))
   (setq org-agenda-custom-commands
             '(("w" todo "WAITING")
               ("i" todo "IN")
@@ -327,19 +323,22 @@ you should place your code here."
               ("h" tags "+home+TODO=\"NEXT\"")
               ("s" tags "+stan+TODO=\"NEXT\"")
               ("c" tags "+ica+TODO=\"NEXT\"")
+              ("t" tags "+talk+TODO=\"NEXT\"")
+              ("r" tags "+research+TODO=\"NEXT\"")
               ("j" tags "+work+TODO=\"NEXT\"")))
   ;;gtd statuses/templates
   (setq org-todo-keywords
-    '((sequence "IN" "NEXT" "PROJECT" "WAITING" "REF" "INCUBATED" "DONE" )))
+    '((sequence "IN" "NEXT" "PROJECT" "WAITING" "INCUBATED" "DONE" )))
   (setq org-capture-templates
-    '(("i" "IN" entry (file (concat org-directory "/gtd.org"))
+    '(("i" "IN" entry (file (concat org-directory "/_gtd.org"))
         "* IN %?\n%U\n" :clock-resume t)
-      ("n" "NOTE" entry (file (concat org-directory "/notes.org"))
+      ("n" "NOTE" entry (file (concat org-directory "/_notes.org"))
         "* %?\n%U\n" :clock-resume t)
-      ("r" "REF" entry (file (concat org-directory "/ref.org"))
-       "* REF %?\n%U\n" :clock-resume t)
-      ("s" "SOMEDAY" entry (file (concat org-directory "/someday.org"))
+      ("r" "REF" entry (file (concat org-directory "/_ref.org"))
+       "* %?\n%U\n" :clock-resume t)
+      ("s" "SOMEDAY" entry (file (concat org-directory "/_someday.org"))
         "* %?\n%U\n" :clock-resume t)))
+
   ;;make kill backward word work in search buffer
   (with-eval-after-load 'company
     (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word))
