@@ -306,13 +306,15 @@ before packages are loaded. If you are unsure, you should try in setting them in
   )
 
 (defun dotspacemacs/user-config ()
-  "Configuration function for user code.
+  "Configuration function for user cprofil.txt
+ode.
 This function is called at the very end of Spacemacs initialization after
   layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq-default dotspacemacs-themes '(hc-zenburn spacemacs-dark))
+  (setq word-wrap t)
   ;;org files goes in dropbox
   (setq org-directory "~/Dropbox/org")
   (setq org-agenda-files '("~/Dropbox/org"))
