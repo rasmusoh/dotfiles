@@ -1,20 +1,21 @@
-﻿syntax on
+syntax on
 set encoding=utf-8
 filetype plugin indent on
 
 "" OS SPECIFIC SETTINGS
-if has("win32")
-    inoremap <Char-0x07F> <BS>
-    nnoremap <Char-0x07F> <BS>
-endif
+"if has("win32")
+"    inoremap <Char-0x07F> <BS>
+"    nnoremap <Char-0x07F> <BS>
+" endif
 
 " COLORSCHEME
-if (!has("gui_running") && has("win32"))
-    set term=xterm
-    set t_Co=256
-    let &t_AB="\e[48;5;%dm"
-    let &t_AF="\e[38;5;%dm"
-endif
+" if (!has("gui_running") && has("win32"))
+"     set term=xterm
+"         set t_Co=256
+"            let &t_AB="\e[48;5;%dm"
+			
+" let &t_AF="\e[38;5;%dm"
+" endif
 
 " SEARCH SETTINGS
 set ignorecase
