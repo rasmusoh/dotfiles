@@ -38,8 +38,10 @@ noremap <CR> O<Esc>
 " kill line
 noremap K i<CR><Esc>k$
 " cutting chars and visual paste doesnt write to register
-vnoremap p "_c<Esc>p 
-vnoremap P "_c<Esc>P
+vnoremap p "_c<Esc>"+p 
+vnoremap P "_c<Esc>"+P
+noremap p "+p 
+noremap P "+P
 noremap c "_c
 noremap C "_C
 noremap x "_x

@@ -313,9 +313,9 @@ This function is called at the very end of Spacemacs initialization after
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq-default dotspacemacs-themes '(hc-zenburn spacemacs-dark))
+  (setq-default dotspacemacs-themes '(zenburn spacemacs-dark))
 
-  (setq projectile-enable-caching t)
+  (setq global-visual-line-mode t)
 
   ;;org files goes in dropbox
   (setq org-directory "~/Dropbox/org")
@@ -354,6 +354,11 @@ you should place your code here."
 
   (define-key evil-normal-state-map (kbd "C-i") 'evil-jump-forward)
   (define-key evil-visual-state-map (kbd "C-i") 'evil-jump-forward)
+
+  (with-eval-after-load 'projectile
+    (setq projectile-enable-caching t)
+    (add-to-list 'projectile-globally-ignored-directories "node_modules")
+    (add-to-list 'projectile-globally-ignored-directories "coverage"))
 
   ;; svenska chars map
   (define-key evil-normal-state-map (kbd "ö") 'evil-repeat-find-char)
@@ -404,10 +409,7 @@ you should place your code here."
   (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
-  (add-to-list 'projectile-globally-ignored-directories "node_modules")
-  (add-to-list 'projectile-globally-ignored-directories "coverage")
-
-  (global-visual-line-mode t))
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
