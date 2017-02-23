@@ -41,6 +41,7 @@ values."
      clojure
      csharp
      emacs-lisp
+     common-lisp
      git
      github
      helm
@@ -345,9 +346,15 @@ you should place your code here."
   (with-eval-after-load 'company
     (define-key company-active-map (kbd "C-w") 'evil-delete-backward-word))
   (with-eval-after-load 'helm
-      (define-key helm-map (kbd "C-w") 'evil-delete-backward-word))
+    (define-key helm-map (kbd "C-w") 'evil-delete-backward-word))
+
   (define-key isearch-mode-map (kbd "C-w") 'isearch-delete-char)
   (define-key isearch-mode-map (kbd "C-p") 'isearch-yank-word-or-char)
+
+  (with-eval-after-load 'projectile
+    (add-to-list 'projectile-globally-ignored-directories "node_modules")
+
+    (add-to-list 'projectile-globally-ignored-directories "coverage"))
 
   (define-key evil-normal-state-map (kbd "C-i") 'evil-jump-forward)
   (define-key evil-visual-state-map (kbd "C-i") 'evil-jump-forward)
@@ -396,9 +403,7 @@ you should place your code here."
   (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 
-  (add-to-list 'projectile-globally-ignored-directories "node_modules")
-  (add-to-list 'projectile-globally-ignored-directories "coverage")
-
+  (setq-default evil-escape-delay 0.5)
   (global-visual-line-mode t))
 
 ;; Do not write anything past this comment. This is where Emacs will
