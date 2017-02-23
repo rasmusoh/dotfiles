@@ -3,42 +3,101 @@ set encoding=utf-8
 filetype plugin indent on
 set noerrorbells
 colorscheme ir_black
-set guifont=consolas:h12
+set guifont=consolas:h12:
 
-"" OS SPECIFIC SETTINGS
-"if has("win32")
-"    inoremap <Char-0x07F> <BS>
-"    nnoremap <Char-0x07F> <BS>
-" endif
+"""""""""""""""""""""""
+"""-----PLUGINS-----"""
+"""""""""""""""""""""""
+" 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tpope/vim-repeat'
+Plugin 'junegunn/goyo.vim'
+call vundle#end()            
 
-" SEARCH SETTINGS
+runtime macros/matchit.vim
+
+" Tweaks for browsing
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+
+"" file search
+set path+=**
+set wildmenu
+
+"" tags 
+command! MakeTags !ctags -R .
+
+"""""""""""""""""""""""
+"""------SEARCH-----"""
+"""""""""""""""""""""""
+" 
+"" search using ripgrep
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
+
+" search settings
 set ignorecase
 set smartcase
 set incsearch
 set nohlsearch
 
-"TAB BEHAVIOUR
+
+"tab behaviour
 filetype plugin indent on " show existing tab with 4 spaces width
 set tabstop=4 " when indenting with '>', use 4 spaces width
 set shiftwidth=4 " On pressing tab, insert 4 spaces
 set expandtab
+set number
 
-"MAPPINGS
+
+"""""""""""""""""""""""
+"""------DISPLAY----"""
+"""""""""""""""""""""""
+" soft word wrap
+set wrap linebreak nolist
+map j gj
+map k gk
+setglobal foldmethod=indent
+
+"""""""""""""""""""""""
+"""----MAPPINGS-----"""
+"""""""""""""""""""""""
+
 inoremap fd <Esc>
 vnoremap fd <Esc>
 let mapleader = "\<Space>"
+
+"" map Enter
 noremap <CR> o<Esc>
-noremap <CR> O<Esc>
+:autocmd CmdwinEnter * nnoremap <CR> <CR>
+:autocmd BufReadPost quickfix nnoremap <CR> <CR>
+
 " kill line
 noremap K i<CR><Esc>k$
 " cutting chars and visual paste doesnt write to register
-vnoremap p "_c<Esc>p 
-vnoremap P "_c<Esc>P
+noremap p "+p
+noremap P "+P
+vnoremap p "_c<Esc>"+p 
+vnoremap P "_c<Esc>"+P
 noremap c "_c
+noremap cc "_cc
 noremap C "_C
 noremap x "_x
 noremap X "_dd
 " cut to clipboard
+noremap d "+d
+noremap dd "+dd
+noremap D "+D
 noremap y "*y
 noremap yy "*yy
 noremap Y "*Y
@@ -54,42 +113,11 @@ map ¨ ]
 map - /
 map _ ?
 
-""spacemacs style mapping of Visual Studio commands
-let mapleader=" "
-
-map <Leader>/ :vsc Edit.FindInFiles<CR>
-
-map <Leader>bn :vsc Window.NextTab<CR>
-map <Leader>bN :vsc Window.NewWindow<CR>
-map <Leader>bp :vsc Window.PreviousTab<CR>
-map <Leader>bd :vsc Window.CloseDocumentWindow<CR>
-
-map <Leader>en :vsc View.NextError<CR>
-map <Leader>ep :vsc View.PreviousError<CR>
-
-map <Leader>fs :vsc File.SaveSelectedItems<CR>
-
-map <Leader>p% :vsc Edit.ReplaceInFiles<CR>
-map <Leader>pc :vsc Build.BuildSolution<CR>
-map <Leader>pm :vsc View.PackageManagerConsole<CR>
-map <Leader>pt :vsc View.SolutionExplorer<CR>
-map <Leader>pf :vsc Edit.NavigateTo<CR>
-
-map <Leader>m= :vsc Edit.FormatDocument<CR>
-map <Leader>mgg :vsc Edit.GoToDeclaration<CR>
-map <Leader>mgt :vsc Edit.GoToDefinition<CR>
-map <Leader>mgu :vsc Edit.FindAllReferences<CR>
-
-map <Leader>w/ :vsc Window.NewVerticalTabGroup<CR>
-map <Leader>w- :vsc Window.NewHorizontalTabGroup<CR>
-map <Leader>wn :vsc Window.MovetoNextTabGroup<CR>
-map <Leader>wp :vsc Window.MovetoPreviousTabGroup<CR>
-map <Leader>wd :vsc Window.CloseDocumentWindow<CR>
-
-map <C-g> :vsc Window.CloseToolWindow<CR>
-
-" IF USING GUI, NO SCROLL/MENU/TOOLBAR
-set guioptions-=r  " no scrollbar on the right
-set guioptions-=l  " no scrollbar on the left:
-set guioptions-=m  " no menu
-set guioptions-=T  " no toolbar
+"""""""""""""""""""""""
+"""-------GUI-------"""
+"""""""""""""""""""""""
+" if using gui, no scroll/menu/toolbar
+:set guioptions-=m  "remove menu bar
+:set guioptions-=T  "remove toolbar
+:set guioptions-=r  "remove right-hand scroll bar
+:set guioptions-=L  "remove left-hand scroll bar
