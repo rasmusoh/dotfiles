@@ -39,6 +39,7 @@
   ;; delete: text object
   (evil-define-operator evil-destroy (beg end type register yank-handler)
     "Vim's 's' without clipboard."
+
     (evil-delete beg end type ?_ yank-handler))
 
   ;; delete: to end of line
