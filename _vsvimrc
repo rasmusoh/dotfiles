@@ -1,116 +1,67 @@
-syntax on
-set encoding=utf-8
-filetype plugin indent on
-set noerrorbells
-colorscheme ir_black
-set guifont=consolas:h12
-
-"" OS SPECIFIC SETTINGS
-"if has("win32")
-"    inoremap <Char-0x07F> <BS>
-"    nnoremap <Char-0x07F> <BS>
-" endif
-
-"" file search
-set path+=**
-set wildmenu
-
-"" tags 
-command! MakeTags !ctags -R .
-
-" Tweaks for browsing
-let g:netrw_banner=0        " disable annoying banner
-let g:netrw_browse_split=4  " open in prior window
-let g:netrw_altv=1          " open splits to the right
-let g:netrw_liststyle=3     " tree view
-let g:netrw_list_hide=netrw_gitignore#Hide()
-let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
-
-" SEARCH SETTINGS
+set clipboard=unnamed  " Yanks go on clipboard instead.
+set incsearch " incremental searching on
+set nohlsearch " highlight all matches
 set ignorecase
 set smartcase
-set incsearch
-set nohlsearch
-
-"TAB BEHAVIOUR
-filetype plugin indent on " show existing tab with 4 spaces width
-set tabstop=4 " when indenting with '>', use 4 spaces width
-set shiftwidth=4 " On pressing tab, insert 4 spaces
+set backspace=indent,eol,start
+set autoindent
 set expandtab
+set tabstop=4
 
-"MAPPINGS
 inoremap fd <Esc>
 vnoremap fd <Esc>
+
+noremap <c-o> :vsc View.NavigateBackward<cr>
+noremap <c-i> :vsc View.NavigateForward<cr>
+nnoremap <c-]> :vsc Edit.GoToDefinition<cr>
 let mapleader = "\<Space>"
 
-noremap   
-"map enter to open line (for paste on new line)
-noremap <CR> o<Esc>
+"" spacemacs
+nnoremap<c-g> :vsc Window.ActivateDocumentWindow<cr>
 
-" kill line
-noremap K i<CR><Esc>k$
-" cutting chars and visual paste doesnt write to register
-noremap p "+p
-noremap P "+P
-vnoremap p "_c<Esc>"+p 
-vnoremap P "_c<Esc>"+P
-noremap c "_c
-noremap cc "_cc
-noremap C "_C
-noremap x "_x
-noremap X "_dd
-" cut to clipboard
-noremap d "+d
-noremap dd "+dd
-noremap D "+D
-noremap y "+y
-noremap yy "+yy
-noremap Y "+Y
-" mapping so swedish keyboard will behave similarly
-map ö ;
-map Ö :
-map ä '
-map Ä "
-map å [
-map Å {
-map ¤ $
-map ¨ ]
-map - /
-map _ ?
+noremap <leader>; :vsc Edit.CommentSelection<cr>
+noremap <leader>: :vsc Edit.UncommentSelection<cr>
+nnoremap <leader>/ :vsc Edit.FindinFiles<cr>
 
-""spacemacs style mapping of Visual Studio commands
-let mapleader=" "
+nnoremap <leader>ep :vsc View.PreviousError<CR>
+nnoremap <leader>en :vsc View.NextError<CR>
+nnoremap <leader>ee :vsc View.ErrorList<CR>
 
-nnoremap <C-o> :vsc View.NavigateBackward<CR>
-nnoremap <C-i> :vsc View.NavigateForward<CR>
-map <Leader>/ :vsc Edit.FindInFiles<CR>
-map <Leader>; :vsc Edit.CommentSelection<CR>
-map <Leader>: :vsc Edit.UncommentSelection<CR>
-map <Leader>bn :vsc Window.NextTab<CR>
-map <Leader>bN :vsc Window.NewWindow<CR>
-map <Leader>bp :vsc Window.PreviousTab<CR>
-map <Leader>bd :vsc Window.CloseDocumentWindow<CR>
+nnoremap <leader>bd :vsc Window.CloseDocumentWindow<cr>
+nnoremap gt :vsc Window.NextDocumentWindow<cr>
+nnoremap gT :vsc Window.PreviousDocumentWindow<cr>
 
-map <Leader>en :vsc View.NextError<CR>
-map <Leader>ep :vsc View.PreviousError<CR>
+nnoremap <leader>sc :nohlsearch<cr><esc>
 
-map <Leader>fs :vsc File.SaveSelectedItems<CR>
+nnoremap <leader>fed :e ~/_vsvimrc<CR>
+nnoremap <leader>feR :so ~/_vsvimrc<CR>
+nnoremap <leader>ff :vsc Edit.GotoFile<CR>
+nnoremap <leader>fs :vsc File.SaveSelectedItems<CR>
 
-map <Leader>p% :vsc Edit.ReplaceInFiles<CR>
-map <Leader>pc :vsc Build.BuildSolution<CR>
-map <Leader>pm :vsc View.PackageManagerConsole<CR>
-map <Leader>pt :vsc View.SolutionExplorer<CR>
-map <Leader>pf :vsc File.FuzzyOpenFile<CR>
+nnoremap <leader>mb :vsc Debug.ToggleBreakpoint<cr>
+nnoremap <leader>m/ :vsc Edit.GotoSymbol<cr>
+nnoremap <leader>mr :vsc View.FindSymbolResults<cr>
+nnoremap <leader>ma :vsc Edit.FindAllReferences<cr>
+nnoremap <leader>m= :vsc Edit.FormatDocument<cr>
 
-map <Leader>m= :vsc Edit.FormatDocument<CR>
-map <Leader>mgg :vsc Edit.GoToDeclaration<CR>
-map <Leader>mgt :vsc Edit.GoToDefinition<CR>
-map <Leader>mgu :vsc Edit.FindAllReferences<CR>
+nnoremap <leader>pt :vsc View.SolutionExplorer<cr>
+nnoremap <leader>r :vsc View.FindResults1<cr>
 
-map <Leader>w/ :vsc Window.NewVerticalTabGroup<CR>
-map <Leader>w- :vsc Window.NewHorizontalTabGroup<CR>
-map <Leader>wn :vsc Window.MovetoNextTabGroup<CR>
-map <Leader>wp :vsc Window.MovetoPreviousTabGroup<CR>
-map <Leader>wd :vsc Window.CloseDocumentWindow<CR>
+nnoremap <leader>wl :vsc Window.MovetoNextTabGroup<cr>
+nnoremap <leader>wh :vsc Window.MovetoPreviousTabGroup<cr>
+nnoremap <leader>w- :split<cr>
+nnoremap <leader>w/ :vsplit<cr>
 
-map <C-g> :vsc Window.CloseToolWindow<CR>
+
+"" Unimaired
+nnoremap [q :vsc Edit.GoToFindResults1PrevLocation<cr>
+nnoremap ]q :vsc Edit.GoToFindResults1NextLocation<cr>
+nnoremap ]c :vsc Diff.NextDifference<cr>
+nnoremap [c :vsc Diff.PreviousDifference<cr>
+nnoremap ]l :vsc Edit.GoToPrevLocation<cr>
+nnoremap [l :vsc Edit.GoToNextLocation<cr>
+nnoremap ]e :m+1<cr>k
+nnoremap [e :m-2<cr>
+xnoremap ]e :m'>+1<cr>gv
+xnoremap [e :m'<-2<cr>jgv
+nnoremap [ob :vsc Debug.EnableAllBreakpoints<cr>
