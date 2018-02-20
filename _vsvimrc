@@ -14,54 +14,20 @@ vnoremap fd <Esc>
 noremap <c-o> :vsc View.NavigateBackward<cr>
 noremap <c-i> :vsc View.NavigateForward<cr>
 nnoremap <c-]> :vsc Edit.GoToDefinition<cr>
+nnoremap gt :vsc Window.NextDocumentWindow<cr>
+nnoremap <c-w>o :vsc Window.ActivateDocumentWindow<cr>
+nnoremap gT :vsc Window.PreviousDocumentWindow<cr>
+
 let mapleader = "\<Space>"
-
-"" spacemacs
-nnoremap<c-g> :vsc Window.ActivateDocumentWindow<cr>
-
-noremap <leader>; :vsc Edit.CommentSelection<cr>
-noremap <leader>: :vsc Edit.UncommentSelection<cr>
+noremap gcc :vsc Edit.CommentSelection<cr>
+noremap gcu :vsc Edit.UncommentSelection<cr>
 nnoremap <leader>/ :vsc Edit.FindinFiles<cr>
-
 nnoremap <leader>ep :vsc View.PreviousError<CR>
 nnoremap <leader>en :vsc View.NextError<CR>
 nnoremap <leader>ee :vsc View.ErrorList<CR>
-
-nnoremap <leader>bd :vsc Window.CloseDocumentWindow<cr>
-nnoremap gt :vsc Window.NextDocumentWindow<cr>
-nnoremap gT :vsc Window.PreviousDocumentWindow<cr>
-
 nnoremap <leader>sc :nohlsearch<cr><esc>
+nnoremap <c-p> :vsc Edit.GotoFile<CR>
+nnoremap <leader>r :vsc Edit.FindAllReferences<cr>
+nnoremap <leader>= :vsc Edit.FormatDocument<cr>
+nnoremap <leader>t :vsc View.SolutionExplorer<cr>
 
-nnoremap <leader>fed :e ~/_vsvimrc<CR>
-nnoremap <leader>feR :so ~/_vsvimrc<CR>
-nnoremap <leader>ff :vsc Edit.GotoFile<CR>
-nnoremap <leader>fs :vsc File.SaveSelectedItems<CR>
-
-nnoremap <leader>mb :vsc Debug.ToggleBreakpoint<cr>
-nnoremap <leader>m/ :vsc Edit.GotoSymbol<cr>
-nnoremap <leader>mr :vsc View.FindSymbolResults<cr>
-nnoremap <leader>ma :vsc Edit.FindAllReferences<cr>
-nnoremap <leader>m= :vsc Edit.FormatDocument<cr>
-
-nnoremap <leader>pt :vsc View.SolutionExplorer<cr>
-nnoremap <leader>r :vsc View.FindResults1<cr>
-
-nnoremap <leader>wl :vsc Window.MovetoNextTabGroup<cr>
-nnoremap <leader>wh :vsc Window.MovetoPreviousTabGroup<cr>
-nnoremap <leader>w- :split<cr>
-nnoremap <leader>w/ :vsplit<cr>
-
-
-"" Unimaired
-nnoremap [q :vsc Edit.GoToFindResults1PrevLocation<cr>
-nnoremap ]q :vsc Edit.GoToFindResults1NextLocation<cr>
-nnoremap ]c :vsc Diff.NextDifference<cr>
-nnoremap [c :vsc Diff.PreviousDifference<cr>
-nnoremap ]l :vsc Edit.GoToPrevLocation<cr>
-nnoremap [l :vsc Edit.GoToNextLocation<cr>
-nnoremap ]e :m+1<cr>k
-nnoremap [e :m-2<cr>
-xnoremap ]e :m'>+1<cr>gv
-xnoremap [e :m'<-2<cr>jgv
-nnoremap [ob :vsc Debug.EnableAllBreakpoints<cr>
