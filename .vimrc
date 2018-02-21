@@ -3,7 +3,7 @@ vmap fd <esc>
 set ignorecase
 set smartcase
 set hidden
-set clipboard^=unnamed, unnamedplus
+set clipboard^=unnamed,unnamedplus
 set splitbelow
 set path+=**
 set tabstop=4 " when indenting with '>', use 4 spaces width
