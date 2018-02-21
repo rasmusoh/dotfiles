@@ -21,13 +21,15 @@ nnoremap gT :vsc Window.PreviousDocumentWindow<cr>
 let mapleader = "\<Space>"
 noremap gcc :vsc Edit.CommentSelection<cr>
 noremap gcu :vsc Edit.UncommentSelection<cr>
-nnoremap <leader>/ :vsc Edit.FindinFiles<cr>
-nnoremap <leader>ep :vsc View.PreviousError<CR>
-nnoremap <leader>en :vsc View.NextError<CR>
-nnoremap <leader>ee :vsc View.ErrorList<CR>
-nnoremap <leader>sc :nohlsearch<cr><esc>
-nnoremap <c-p> :vsc Edit.GotoFile<CR>
-nnoremap <leader>r :vsc Edit.FindAllReferences<cr>
-nnoremap <leader>= :vsc Edit.FormatDocument<cr>
-nnoremap <leader>t :vsc View.SolutionExplorer<cr>
+nnoremap <Leader>/ :vsc Edit.FindinFiles<cr>
+nnoremap <Leader>ep :vsc View.PreviousError<CR>
+nnoremap <Leader>en :vsc View.NextError<CR>
+nnoremap <Leader>ee :vsc View.ErrorList<CR>
+nnoremap <Leader>sc :nohlsearch<cr><esc>
+nnoremap <Leader>f :vsc Resharper.Resharper_GotoFile<CR>
+nnoremap <Leader>r :vsc Edit.FindAllReferences<cr>
+nnoremap <Leader>= :vsc Edit.FormatDocument<cr>
+nnoremap <Leader>t :vsc View.SolutionExplorer<cr>
+
+"test
 
