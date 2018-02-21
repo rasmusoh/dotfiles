@@ -5,7 +5,8 @@ set smartcase
 set hidden
 set clipboard^=unnamed,unnamedplus
 set splitbelow
-set path+=**
+set nobackup  "get rid of *~ files
+set path+=** " find recursively
 set wildignore+=*.zip,*.png,*.jpg,*.gif,*.pdf,*DS_Store*,*/.git/*,*/node_modules/*,*/build/*,package-lock.json
 set tabstop=4 " when indenting with '>', use 4 spaces width
 set shiftwidth=4 " On pressing tab, insert 4 spaces
@@ -28,7 +29,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gioele/vim-autoswap'
-Plug 'airblade/vim-rooter'
 Plug 'junegunn/goyo.vim'
 Plug 'jremmen/vim-ripgrep'
 "Plug 'valloric/YouCompleteMe'
