@@ -6,6 +6,7 @@ set hidden
 set clipboard^=unnamed,unnamedplus
 set splitbelow
 set path+=**
+set wildignore+=*.zip,*.png,*.jpg,*.gif,*.pdf,*DS_Store*,*/.git/*,*/node_modules/*,*/build/*,package-lock.json
 set tabstop=4 " when indenting with '>', use 4 spaces width
 set shiftwidth=4 " On pressing tab, insert 4 spaces
 set expandtab
@@ -15,9 +16,9 @@ set foldmethod=indent
 set foldlevel=20
 
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -61,6 +62,7 @@ map j gj
 map k gk
 
 "c and visual paste doesnt write to register
+map <Leader>= mxgg=G`xzz
 noremap c "_c
 noremap cc "_cc
 noremap C "_C
