@@ -6,6 +6,7 @@ set hidden
 set clipboard^=unnamed,unnamedplus
 set splitbelow
 set nobackup  "get rid of *~ files
+set noundofile "get rid of *un~ files
 set path+=** " find recursively
 set wildignore+=*.zip,*.png,*.jpg,*.gif,*.pdf,*DS_Store*,*/.git/*,*/node_modules/*,*/build/*,package-lock.json
 set tabstop=4 " when indenting with '>', use 4 spaces width
