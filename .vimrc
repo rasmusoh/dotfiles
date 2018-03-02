@@ -17,6 +17,8 @@ set display+=lastline
 set foldmethod=indent
 set foldlevel=20
 
+set grepprg=rg\ --vimgrep
+
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
                 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -31,7 +33,6 @@ Plug 'tpope/vim-repeat'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gioele/vim-autoswap'
 Plug 'junegunn/goyo.vim'
-Plug 'jremmen/vim-ripgrep'
 "Plug 'valloric/YouCompleteMe'
 "Plug 'scrooloose/syntastic'
 call plug#end()
@@ -47,6 +48,7 @@ call plug#end()
 let g:netrw_banner=0        " disable annoying banner
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
+
 
 colorscheme ir_black
 
