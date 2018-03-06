@@ -30,9 +30,11 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gioele/vim-autoswap'
 Plug 'junegunn/goyo.vim'
+Plug 'wesgibbs/vim-irblack'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 "Plug 'valloric/YouCompleteMe'
 "Plug 'scrooloose/syntastic'
 call plug#end()
