@@ -30,7 +30,11 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
+<<<<<<< HEAD
 Plug 'tpope/vim-commentary'
+Plug 'ctrlpvim/ctrlp.vim'
+=======
+>>>>>>> 3c9cace035e8622f391679f6386902bde9c0c2dc
 Plug 'gioele/vim-autoswap'
 Plug 'junegunn/goyo.vim'
 Plug 'wesgibbs/vim-irblack'
@@ -51,6 +55,7 @@ call plug#end()
 let g:netrw_banner=0        " disable annoying banner
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
+
 
 colorscheme ir_black
 
