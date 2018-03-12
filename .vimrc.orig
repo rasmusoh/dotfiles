@@ -30,7 +30,11 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
+<<<<<<< HEAD
 Plug 'tpope/vim-commentary'
+Plug 'ctrlpvim/ctrlp.vim'
+=======
+>>>>>>> 3c9cace035e8622f391679f6386902bde9c0c2dc
 Plug 'gioele/vim-autoswap'
 Plug 'junegunn/goyo.vim'
 Plug 'wesgibbs/vim-irblack'
@@ -52,6 +56,7 @@ let g:netrw_banner=0        " disable annoying banner
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 
+
 colorscheme ir_black
 
 " if using gui, no scroll/menu/toolbar
@@ -67,15 +72,7 @@ map j gj
 map k gk
 
 "c and visual paste doesnt write to register
-map <Leader>v ggVG
 map <Leader>= mxgg=G`xzz
-map <Leader>f :Files<CR>
-map <Leader>gf :GFiles<CR>
-map <Leader>b :Buffers<CR>
-nnoremap <silent> <leader>y :call system('/mnt/c/Windows/System32/clip.exe', @0)<CR>
-vnoremap <silent> <leader>y :call system('/mnt/c/Windows/System32/clip.exe', @0)<CR>
-nnoremap <silent> <leader>p :r !/mnt/c/Windows/System32/paste.exe<CR>
-vnoremap <silent> <leader>p :r !/mnt/c/Windows/System32/paste.exe<CR>gvd
 noremap c "_c
 noremap cc "_cc
 noremap C "_C
