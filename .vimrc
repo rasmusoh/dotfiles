@@ -66,7 +66,15 @@ map j gj
 map k gk
 
 "c and visual paste doesnt write to register
+map <Leader>v ggVG
 map <Leader>= mxgg=G`xzz
+map <Leader>f :Files<CR>
+map <Leader>gf :GFiles<CR>
+map <Leader>b :Buffers<CR>
+nnoremap <silent> <leader>y :call system('/mnt/c/Windows/System32/clip.exe', @0)<CR>
+vnoremap <silent> <leader>y :call system('/mnt/c/Windows/System32/clip.exe', @0)<CR>
+nnoremap <silent> <leader>p :r !/mnt/c/Windows/System32/paste.exe<CR>
+vnoremap <silent> <leader>p :r !/mnt/c/Windows/System32/paste.exe<CR>gvd
 noremap c "_c
 noremap cc "_cc
 noremap C "_C
