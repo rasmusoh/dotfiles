@@ -36,8 +36,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'wesgibbs/vim-irblack'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-"Plug 'valloric/YouCompleteMe'
-"Plug 'scrooloose/syntastic'
+Plug 'valloric/YouCompleteMe'
+Plug 'scrooloose/syntastic'
 call plug#end()
 
 "set statusline+=%#warningmsg#
@@ -46,7 +46,6 @@ call plug#end()
 "let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_check_on_open = 1
 "let g:syntastic_check_on_wq = 0
-"let g:syntastic_rust_checkers = ['rustc']
 
 let g:netrw_banner=0        " disable annoying banner
 let g:netrw_altv=1          " open splits to the right
