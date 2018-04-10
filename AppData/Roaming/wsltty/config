@@ -7,12 +7,13 @@ Term=xterm-256color
 BellType=0
 Locale=en_US
 CursorType=block
+
 ForegroundColour = 208, 208, 208
 BackgroundColour =  28,  28,  28
-CursorColour     = 255, 175, 255
+CursorColour     = 255, 175, 200 
 IMECursorColour  = 128, 224, 160
-Black            =  12,  12,  12
-BoldBlack        =  10,  10,  10
+Black            =  55,  55,  55
+BoldBlack        =  50,  50,  50
 Red              = 215, 135, 135
 BoldRed          = 223, 135, 135
 Green            = 175, 215, 135
