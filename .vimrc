@@ -41,6 +41,10 @@ Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
 let g:netrw_banner=0        " disable annoying banner
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
