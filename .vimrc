@@ -44,6 +44,7 @@ call plug#end()
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \}
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 let g:netrw_banner=0        " disable annoying banner
 let g:netrw_altv=1          " open splits to the right
