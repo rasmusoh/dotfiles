@@ -37,17 +37,14 @@ Plug 'wesgibbs/vim-irblack'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'valloric/YouCompleteMe'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
+Plug 'l04m33/vlime', {'rtp': 'vim/'}
 call plug#end()
 
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()} 
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
+let g:ale_linters = { 'javascript': ['eslint'], }
 
-let g:netrw_banner=0        " disable annoying banner
+let g:netrw_banner=1        " disable annoying banner
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 
