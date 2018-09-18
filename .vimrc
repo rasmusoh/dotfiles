@@ -1,4 +1,4 @@
-imap fd <esc>
+imap fd <esc><esc>
 vmap fd <esc>
 set ignorecase
 set smartcase
@@ -36,13 +36,16 @@ Plug 'junegunn/goyo.vim'
 Plug 'wesgibbs/vim-irblack'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'valloric/YouCompleteMe'
-"Plug 'scrooloose/syntastic'
-Plug 'w0rp/ale'
 Plug 'l04m33/vlime', {'rtp': 'vim/'}
+Plug 'jiangmiao/auto-pairs'
+Plug 'w0rp/ale'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
-let g:ale_linters = { 'javascript': ['eslint'], }
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 
 let g:netrw_banner=1        " disable annoying banner
 let g:netrw_altv=1          " open splits to the right
@@ -79,6 +82,12 @@ vnoremap c "_c
 vnoremap C "_C
 xnoremap p pgvy
 xnoremap P Pgvy
+
+" completion selection list
+noremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<CR>"
+inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<Up>"
 
 " mapping so swedish keyboard will behave similarly
 map ö ;
