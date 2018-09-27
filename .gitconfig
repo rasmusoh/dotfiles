@@ -31,3 +31,6 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
 [help]
 	autocorrect = 1
+[user]
+	email = rasmus@ohmanbruno.se
+	name = Rasmus Öhman Bruno

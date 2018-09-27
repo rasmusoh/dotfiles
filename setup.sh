@@ -6,4 +6,4 @@ ln -s ~/dotfiles/.gitconfig ~
 ln -s ~/dotfiles/.eslint.json ~
 ln -s ~/dotfiles/.gitignore ~
 ln -s ~/dotfiles/.config/ ~/.config/
-
+chmod +x $HOME/.config/polybar/launch.sh
