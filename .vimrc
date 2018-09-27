@@ -1,5 +1,6 @@
 imap fd <esc><esc>
 vmap fd <esc>
+set encoding=utf-8
 set ignorecase
 set smartcase
 set hidden
@@ -37,7 +38,7 @@ Plug 'wesgibbs/vim-irblack'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'l04m33/vlime', {'rtp': 'vim/'}
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe'
 call plug#end()

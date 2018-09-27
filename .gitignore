@@ -1,3 +1,6 @@
 *.swp
+.config/GIMP*
+.config/dconf*
+.config/pulse*
 *~
 tags
