@@ -41,6 +41,7 @@ Plug 'l04m33/vlime', {'rtp': 'vim/'}
 "Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe'
+Plug 'PotatoesMaster/i3-vim-syntax'
 call plug#end()
 
 let g:ale_linters = {
