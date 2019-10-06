@@ -17,6 +17,8 @@ set wrap linebreak nolist " soft word wrap
 set display+=lastline
 set foldmethod=indent
 set foldlevel=20
+set spelllang=sv_se
+set backupcopy=yes
 
 set grepprg=rg\ --vimgrep
 
@@ -51,9 +53,9 @@ call plug#end()
 "autocmd BufRead,BufNewFile *.shader set filetype=hlsl
 
 let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'cs': ['OmniSharp']
-\}
+            \   'javascript': ['eslint'],
+            \   'cs': ['OmniSharp']
+            \}
 
 let g:OmniSharp_selector_ui = 'fzf'    " Use fzf.vim
 
