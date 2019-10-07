@@ -1,0 +1,35 @@
+{
+    "window.zoomLevel": 0,
+    "vim.handleKeys": {
+        "<C-d>": true,
+        "<C-n>": false,
+        "<C-b>": false,
+        "<C-k>": false,
+    },
+    "vim.useSystemClipboard": true,
+    "beautify.ignore": [
+        "**/*.js",
+        "**/*.jsx"
+    ],
+    "editor.autoClosingQuotes": "never",
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.wordWrap": "on",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "emmet.syntaxProfiles": {
+        "javascript": "jsx",
+        "xml": {
+            "attr_quotes": "single"
+        }
+    },
+    "emmet.triggerExpansionOnTab": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "prettier.tabWidth": 4,
+    "prettier.singleQuote": true,
+    "git.autofetch": true
+}
