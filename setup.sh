@@ -5,4 +5,4 @@ ln -s ~/dotfiles/.tmux.conf ~
 ln -s ~/dotfiles/.gitconfig ~
 ln -s ~/dotfiles/.eslint.json ~
 ln -s ~/dotfiles/.gitignore ~
-ln -s ~/dotfiles/config.json/ ~
+ln -s ~/dotfiles/settings.json/ ~
