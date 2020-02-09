@@ -4,7 +4,7 @@ set encoding=utf-8
 set ignorecase
 set smartcase
 set hidden
-set clipboard^=unnamed,unnamedplus
+set clipboard=unnamed,unnamedplus
 set splitbelow
 set nobackup  "get rid of *~ files
 set noundofile "get rid of *un~ files
@@ -28,6 +28,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -41,10 +42,7 @@ Plug 'wesgibbs/vim-irblack'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'l04m33/vlime', {'rtp': 'vim/'}
-"Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
-Plug 'Valloric/YouCompleteMe'
-Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'dylanaraps/wal.vim'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'vim-scripts/ShaderHighLight'
