@@ -6,3 +6,4 @@ ln -s ~/dotfiles/.gitconfig ~
 ln -s ~/dotfiles/.eslint.json ~
 ln -s ~/dotfiles/.gitignore ~
 ln -s ~/dotfiles/settings.json/ ~/.config/Code/User/settings.json
+ln -s ~/dotfiles/.zshrc ~

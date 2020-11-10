@@ -4,7 +4,7 @@
         "<C-d>": true,
         "<C-n>": false,
         "<C-b>": false,
-        "<C-k>": false,
+        "<C-k>": false
     },
     "vim.useSystemClipboard": true,
     "beautify.ignore": [
