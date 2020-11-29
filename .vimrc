@@ -276,6 +276,7 @@ map <leader>vc :so ~/.vimrc<CR>:PlugClean<CR>
 map <leader>ve :e ~/.vimrc<CR>
 map <leader>vi :so ~/.vimrc<CR>:PlugInstall<CR>
 map <leader>vr :so ~/.vimrc<CR>
+map <leader>y :Goyo<CR>
 
 set termguicolors
 color dracula
