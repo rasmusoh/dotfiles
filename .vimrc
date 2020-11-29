@@ -3,8 +3,8 @@ vmap fd <esc>
 set encoding=utf-8
 scriptencoding utf-8
 set ignorecase
-set smartcase
-set hidden
+set smartcase 
+set hidden 
 set clipboard=unnamedplus,unnamed
 set splitbelow
 set nobackup  "get rid of *~ files
@@ -59,8 +59,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf'
 Plug 'vim-scripts/ShaderHighLight'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
 Plug 'habamax/vim-godot'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'liuchengxu/vim-which-key'
 call plug#end()
 
 let g:airline_powerline_fonts=1
@@ -71,7 +74,6 @@ let g:netrw_banner=1        " disable annoying banner
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 
-colorscheme ir_black
 
 " if using gui, no scroll/menu/toolbar
 set guioptions-=m  "remove menu bar
@@ -80,19 +82,11 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 set guifont=consolas:h12:
 
-let mapleader = "\<Space>"
 
 " line navigation across soft line breaks
 map j gj
 map k gk
 
-" fzf search 
-map <Leader>f :Files<CR>
-map <Leader>gf :GFiles<CR>
-map <Leader>b :Buffers<CR>
-
-" nerdtree 
-map <leader>t :NERDTreeToggle<CR>
 
 " nnoremap <silent> <leader>y :call system('/mnt/c/Windows/System32/clip.exe', @0)<CR>
 " vnoremap <silent> <leader>y :call system('/mnt/c/Windows/System32/clip.exe', @0)<CR>
@@ -100,7 +94,6 @@ map <leader>t :NERDTreeToggle<CR>
 " vnoremap <silent> <leader>p :r !/mnt/c/Windows/System32/paste.exe<CR>gvd
 
 "c and visual paste doesnt write to register
-map <Leader>v ggVG
 noremap c "_c
 noremap cc "_cc
 noremap C "_C
@@ -120,6 +113,7 @@ map ¤ $
 map ¨ ]
 noremap - /
 noremap _ ?
+
 
 " COC stuff
 
@@ -171,6 +165,7 @@ nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> gh :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
@@ -185,11 +180,6 @@ endfunction
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-map <leader>=  :Format<CR>
 
 augroup mygroup
     autocmd!
@@ -198,16 +188,6 @@ augroup mygroup
     " Update signature help on jump placeholder.
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
@@ -253,20 +233,50 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" Mappings for CoCList
-" Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocFzfList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocFzfList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocFzfList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocFzfList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocFzfList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocFzfListResume<CR>
+autocmd FileType markdown,text let b:coc_suggest_disable = 1
+
+" LEADER
+let mapleader = "\<Space>"
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+" Formatting selected code.
+map <leader>=  :Format<CR>
+" select all
+map <Leader>a ggVG
+
+" files
+map <Leader>ff :Files<CR>
+map <Leader>fn :e 
+map <Leader>fs :w<CR>
+map <Leader>b :Buffers<CR>
+
+map <Leader>g :Git<CR>
+
+" List errors
+nnoremap <silent> <leader>cl  :<C-u>CocList locationlist<cr>
+" list commands available in tsserver (and others)
+nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
+" restart when tsserver gets wonky
+nnoremap <silent> <leader>cR  :<C-u>CocRestart<CR>
+" view all errors
+nnoremap <silent> <leader>cl  :<C-u>CocList locationlist<CR>
+" manage extensions
+nnoremap <silent> <leader>cx  :<C-u>CocList extensions<cr>
+" rename the current word in the cursor
+nmap <leader>cr  <Plug>(coc-rename)
+nmap <leader>cf  <Plug>(coc-format-selected)
+vmap <leader>cf  <Plug>(coc-format-selected)
+" run code actions
+vmap <leader>ca  <Plug>(coc-codeaction-selected)
+nmap <leader>ca  <Plug>(coc-codeaction-selected)
+nmap <leader>cq  <Plug>(coc-fix-current)
+
+map <leader>s :Rg<CR>
+map <leader>t :NERDTreeToggle<CR>
+map <leader>vc :so ~/.vimrc<CR>:PlugClean<CR>
+map <leader>ve :e ~/.vimrc<CR>
+map <leader>vi :so ~/.vimrc<CR>:PlugInstall<CR>
+map <leader>vr :so ~/.vimrc<CR>
+
+set termguicolors
+color dracula
+let g:airline_theme='dracula'
