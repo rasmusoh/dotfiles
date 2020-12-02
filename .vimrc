@@ -237,18 +237,11 @@ autocmd FileType markdown,text let b:coc_suggest_disable = 1
 
 " LEADER
 let mapleader = "\<Space>"
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-" Formatting selected code.
+" nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 map <leader>=  :Format<CR>
-" select all
 map <Leader>a ggVG
-
-" files
-map <Leader>ff :Files<CR>
-map <Leader>fn :e 
-map <Leader>fs :w<CR>
+map <Leader>f :Files<CR>
 map <Leader>b :Buffers<CR>
-
 map <Leader>g :Git<CR>
 
 " List errors
@@ -270,7 +263,8 @@ vmap <leader>ca  <Plug>(coc-codeaction-selected)
 nmap <leader>ca  <Plug>(coc-codeaction-selected)
 nmap <leader>cq  <Plug>(coc-fix-current)
 
-map <leader>s :Rg<CR>
+map <leader>r :Rg<CR>
+map <Leader>s :w<CR>
 map <leader>t :NERDTreeToggle<CR>
 map <leader>vc :so ~/.vimrc<CR>:PlugClean<CR>
 map <leader>ve :e ~/.vimrc<CR>
