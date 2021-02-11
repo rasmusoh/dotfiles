@@ -270,7 +270,11 @@ map <leader>vc :so ~/.vimrc<CR>:PlugClean<CR>
 map <leader>ve :e ~/.vimrc<CR>
 map <leader>vi :so ~/.vimrc<CR>:PlugInstall<CR>
 map <leader>vr :so ~/.vimrc<CR>
+
 map <leader>y :Goyo<CR>
+
+autocmd FileType python map <buffer> <F5> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F5> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
 
 set termguicolors
 color dracula

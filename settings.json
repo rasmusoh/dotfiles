@@ -31,5 +31,6 @@
     "javascript.updateImportsOnFileMove.enabled": "always",
     "prettier.tabWidth": 4,
     "prettier.singleQuote": true,
-    "git.autofetch": true
+    "git.autofetch": true,
+    "omnisharp.useGlobalMono": "always"
 }
