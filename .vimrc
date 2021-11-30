@@ -29,6 +29,9 @@ set termguicolors
 set updatetime=300
 set shortmess+=c " Don't pass messages to ins-completion-menu
 set grepprg=rg\ --vimgrep
+let g:netrw_banner=1
+let g:netrw_altv=1
+let g:netrw_liststyle=3
 
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -49,6 +52,7 @@ Plug 'gioele/vim-autoswap'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-peekaboo'
 Plug 'antoinemadec/coc-fzf'
 Plug 'vim-scripts/ShaderHighLight'
 Plug 'vim-airline/vim-airline'
@@ -63,9 +67,8 @@ color dracula
 let g:airline_theme='dracula'
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-let g:netrw_banner=1
-let g:netrw_altv=1
-let g:netrw_liststyle=3
+let g:peekaboo_delay=300
+let g:peekaboo_compact=1
 
 map j gj
 map k gk
@@ -118,9 +121,7 @@ nmap <leader>cq  <Plug>(coc-fix-current)
 map <leader>r :Rg<CR>
 map <Leader>s :w<CR>
 map <leader>t :NERDTreeToggle<CR>
-map <leader>vc :so ~/.vimrc<CR>:PlugClean<CR>
 map <leader>ve :e ~/.vimrc<CR>
-map <leader>vi :so ~/.vimrc<CR>:PlugInstall<CR>
 map <leader>vr :so ~/.vimrc<CR>
 map <leader>y :Goyo<CR>
 
