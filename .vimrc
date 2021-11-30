@@ -28,6 +28,7 @@ set cmdheight=2 " Give more space for displaying messages.
 set termguicolors
 set updatetime=300
 set shortmess+=c " Don't pass messages to ins-completion-menu
+set signcolumn=number
 set grepprg=rg\ --vimgrep
 let g:netrw_banner=1
 let g:netrw_altv=1
