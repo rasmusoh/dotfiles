@@ -5,7 +5,7 @@ set t_vb=
 set ignorecase
 set smartcase
 set hidden
-set clipboard+=unnamedplus
+set clipboard=unnamedplus,unnamed
 set splitbelow
 set nobackup  "get rid of *~ files
 set nowritebackup
