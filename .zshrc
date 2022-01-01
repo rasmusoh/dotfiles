@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/rasmus/.oh-my-zsh"
+export ZSH="/root/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -36,7 +36,7 @@ ZSH_THEME="agnoster"
 # DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -70,7 +70,7 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 export NVM_LAZY_LOAD=false
 export NVM_COMPLETION=true
-plugins=(git fzf zsh-nvm)
+plugins=(git zsh-nvm fzf) 
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,3 +105,21 @@ source $ZSH/oh-my-zsh.sh
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#
+# bindkey '^[[A' history-substring-search-up
+# bindkey '^[[B' history-substring-search-down
+export http_proxy=http://gia.sebank.se:8080
+export https_proxy=http://gia.sebank.se:8080
+export no_proxy=sebank.se,localhost
+export PATH=$HOME/bin:/$HOME/.local/bin:/usr/local/bin:/usr/local/go/bin:$PATH
+export DOCKER_HOST=tcp://localhost:2375
+export GOPROXY=https://repo.sebank.se/artifactory/api/go/gocenter
+export GOPRIVATE=github.sebank.se
+unsetopt beep
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/root/google-cloud-sdk/path.zsh.inc' ]; then . '/root/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/root/google-cloud-sdk/completion.zsh.inc' ]; then . '/root/google-cloud-sdk/completion.zsh.inc'; fi

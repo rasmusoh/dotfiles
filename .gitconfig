@@ -34,3 +34,5 @@
 [user]
 	email = rasmus@ohmanbruno.se
 	name = Rasmus Öhman Bruno
+[oh-my-zsh]
+	hide-status = 1
