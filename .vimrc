@@ -1,7 +1,4 @@
-set encoding=utf-8
 scriptencoding utf-8
-set vb
-set t_vb=
 set ignorecase
 set smartcase
 set hidden

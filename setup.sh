@@ -7,3 +7,4 @@ ln -s ~/dotfiles/.eslint.json ~
 ln -s ~/dotfiles/.gitignore ~
 ln -s ~/dotfiles/settings.json/ ~/.config/Code/User/
 ln -s ~/dotfiles/.zshrc ~
+ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
