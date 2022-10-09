@@ -68,12 +68,19 @@ DISABLE_LS_COLORS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-export NVM_LAZY_LOAD=false
-export NVM_COMPLETION=true
-plugins=(git zsh-nvm fzf) 
+#export NVM_LAZY_LOAD=false
+#export NVM_COMPLETION=true
+plugins=(git fzf) 
 
 source $ZSH/oh-my-zsh.sh
 
+BASE16_SHELL="$HOME/.config/base16-shell/"
+
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        source "$BASE16_SHELL/profile_helper.sh"
+        
+base16_eighties
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
