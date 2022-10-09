@@ -57,12 +57,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
 Plug 'habamax/vim-godot'
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'chriskempson/base16-vim'
 call plug#end()
 
+colorscheme base16-eighties
 let g:airline_powerline_fonts=1
-color dracula
-let g:airline_theme='dracula'
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 let g:peekaboo_delay=300
